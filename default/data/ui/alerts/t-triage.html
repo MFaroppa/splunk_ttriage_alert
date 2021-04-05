@@ -1,0 +1,45 @@
+<form class="form-horizontal form-complex">
+	<div class="control-group">
+		<label class="control-label" for="t-triage_url">URL</label>
+		<div class="controls">
+			<input type="text" name="action.t-triage.param.base_url" id="t-triage_url"/>
+			<span class="help-block">
+				Insert the URL of the t-Triage API (e.g. "http://localhost:8088")
+			</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="t-triage_pattern">Logs pattern</label>
+		<div class="controls">
+			<input type="text" name="action.t-triage.param.pattern" id="t-triage_pattern"/>
+			<span class="help-block">
+				For example: %date %level %class %message
+			</span>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="t-triage_package_names">Package names</label>
+		<div class="controls">
+			<input type="text" name="action.t-triage.param.package_names" id="t-triage_package_names"/>
+			<span class="help-block">
+				The package names must be separated by a comma.
+			</span>
+		</div>
+	</div>
+	<hr />
+	<div class="control-group">
+		<label class="control-label" for="t-triage_client_id">Client ID</label>
+		<div class="controls">
+			<input type="text" name="action.t-triage.param.client_id" id="t-triage_client_id"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="t-triage_secret_id">Secret ID</label>
+		<div class="controls">
+			<input type="text" name="action.t-triage.param.secret_id" id="t-triage_secret_id"/>
+		</div>
+	</div>
+	<span class="help-block">
+		Client ID and Secret ID are generated in t-Triage > Admin Panel > ...
+	</span>
+</form>
