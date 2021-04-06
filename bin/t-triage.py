@@ -1,10 +1,26 @@
 from __future__ import print_function
 import sys, json, urllib.request, urllib.error, urllib.parse
 import time
+import gzip
+import csv
+
+def decompress(results_file):
+    keys = {'_time', '_raw', '_indextime', 'host', 'source', 'sourcetype'}
+    if (results_file.endswith(".gz")):
+        with gzip.open(results_file,'rt') as search_results_file:
+            search_results = csv.DictReader(search_results_file)
+            bulk_json = ''
+            for result in search_results:
+                event = {key: result[key] for key in keys}
+                bulk_json += json.dumps(event)+"\n"
+            return bulk_json
+    else:
+        return None
 
 def sendEvents(token, tokenType, payload):
     api = payload.get('configuration').get('base_url') + '/logs/push'
     print('DEBUG Calling URL = "%s", trying to send events' % api, file=sys.stderr)
+    payload['events'] = decompress(payload.get('results_file'))
     payload['alert_time'] = str(round(time.time() * 1000))
     payload['pattern'] = payload.get("configuration").get("pattern")
     payload['package_names'] = payload.get("configuration").get("package_names")
