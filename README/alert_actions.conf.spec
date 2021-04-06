@@ -3,8 +3,10 @@
 # t-Triage API base URL
 param.base_url = <string>
 
+# Format of the logs
 param.pattern = <string>
 
+# Package names of the product
 param.package_names = <string>
 
 # Client ID - generated in t-Triage App
