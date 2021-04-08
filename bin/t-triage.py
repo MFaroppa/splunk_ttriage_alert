@@ -8,12 +8,12 @@ def decompress(results_file):
     keys = {'_time', '_raw', '_indextime', 'host', 'source', 'sourcetype'}
     if (results_file.endswith(".gz")):
         with gzip.open(results_file,'rt') as search_results_file:
-            search_results = csv.DictReader(search_results_file)
-            bulk_json = ''
-            for result in search_results:
-                event = {key: result[key] for key in keys}
-                bulk_json += json.dumps(event)+"\n"
-            return bulk_json
+            #search_results = csv.DictReader(search_results_file)
+            #bulk_json = ''
+            #for result in search_results:
+            #    event = {key: result[key] for key in keys}
+            #    bulk_json += json.dumps(event)
+            return search_results_file.read()
     else:
         return None
 
